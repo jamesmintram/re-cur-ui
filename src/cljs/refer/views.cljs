@@ -8,9 +8,19 @@
 (def route-data
   [
    :main
-   :leaderboards
+   :users
    10
    ])
+
+
+
+
+;; (ctx/push parent-ctx ::event-id props)
+;; (re-frame/dispatch (ctx/push parent-ctx ::event-id props))
+
+;; (let [ctx (partial ctx/push parent-ctx ::event-id)]
+;;   (re-frame/dispatch (ctx {:user-id 23})))
+
 (defn main-panel []
   (let [name (re-frame/subscribe [::subs/name])]
     [:div
