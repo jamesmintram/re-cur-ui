@@ -11,8 +11,17 @@
  ::user-select
  (ctx/create-rc-handler
   (fn [data params]
-    (log/info "User View: " params)
-    {:user-select params :make-user 55})))
+    (let [{:keys [:id]} data
+          list-item (:list-view-item params)
+          {:keys [:name]} list-item]
+
+      (log/info "We should update the user: " name)
+      ;; How do we access
+
+      ;;TODO: Can we return something here?
+      ;;TODO: We can choose to allow this event to propagate?
+
+      {:user-select params :make-user 55}))))
 
 
 ;;TODO: Some methods for building these dispatch chains
@@ -22,4 +31,4 @@
      users
      (ctx/push parent-handler
                ::user-select
-               {:id 69})]))
+               {:id :some})]))

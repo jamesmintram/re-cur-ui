@@ -6,7 +6,7 @@
    [refer.views :as views]
    [refer.config :as config]
 
-   [refer.modules.leaderboards.data :as data]
+   ;;[refer.modules.leaderboards.data :as data]
    ))
 
 
@@ -23,5 +23,5 @@
 (defn ^:after-load init []
   (re-frame/dispatch-sync [::events/initialize-db])
   (dev-setup)
-  (data/refresh-leaderboard-list)
+  ;;(data/refresh-leaderboard-list)
   (mount-root))

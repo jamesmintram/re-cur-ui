@@ -25,7 +25,7 @@
           parent-args {:data parent-data
                        :params result}]
 
-      (if parent-event
+      (if parent-event ;;TODO: Need to check if we should continue?
         (dispatch [parent-event parent-args])))))
 
 

@@ -32,13 +32,16 @@
 ;;----------------------------------------------------------
 
 (defn content-panel [path]
-  (let [path-head (first path)
+  (let [pathc (route/step path)
+        path-head (first path)
         path-tail (rest path)
         handler {:event ::content-panel-sel :data {:ha 1}}]
-    (log/info path-head)
+
+    (log/info "PATH:" pathc)
+
     (case path-head
           :leaderboards (leaderboards/root path-tail handler)
-          :users (users/root path-tail handler))))  
+          :users (users/root path-tail handler))))
 
 (defn main-panel [path]
   [:div

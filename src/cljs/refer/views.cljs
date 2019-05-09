@@ -2,15 +2,17 @@
   (:require
    [re-frame.core :as re-frame]
    [refer.subs :as subs]
+   [refer.util.route :as route]
    [refer.layout.main :as main]
    ))
 
 (def route-data
+  (route/make-route
   [
    :main
    :users
    10
-   ])
+   ]))
 
 
 
