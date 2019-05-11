@@ -38,10 +38,12 @@
         handler {:event ::content-panel-sel :data {:ha 1}}]
 
     (log/info "PATH:" pathc)
+    (leaderboards/root path-tail handler)
 
-    (case path-head
-          :leaderboards (leaderboards/root path-tail handler)
-          :users (users/root path-tail handler))))
+    ;;(case path-head
+    ;;     :leaderboards (leaderboards/root path-tail handler)
+    ;;      :users (users/root path-tail handler))
+    ))
 
 (defn main-panel [path]
   [:div
@@ -50,12 +52,16 @@
 
 ;; Root layout
 (defn main-layout [path]
-  (let [path-head (first path)
+  (let [pathc (route/step path)
+        path-head (first path)
         path-tail (rest path)]
-    (case path-head
-      :main  (main-panel path-tail)
-      :login (login/login path-tail)
-      )))
+    (log/info "PATH HEAD: " pathc)
+    (main-panel pathc)
+    ;;(case path-head
+    ;;  :main  (main-panel path-tail)
+    ;;  :login (login/login path-tail)
+    ;;  ))
+  ))
 
 
 

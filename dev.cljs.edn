@@ -1,4 +1,9 @@
 ^{:watch-dirs ["test" "src/cljs"]
   :css-dirs ["resources/public/css"]
   :auto-testing false}
-{:main refer.core}
+{:main refer.core
+ :closure-defines {"re_frame.trace.trace_enabled_QMARK_" true
+                   "day8.re_frame.tracing.trace_enabled_QMARK_" true}
+ :preloads [devtools.preload
+            day8.re-frame-10x.preload
+            re-frisk.preload]}

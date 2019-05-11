@@ -26,8 +26,11 @@
 
                    [com.taoensso/timbre "4.10.0"]
 
-                   [re-frisk "0.5.4"]]
+                   [re-frisk "0.5.4"]
+                   [cider/piggieback "0.4.0"]]
 
+    :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+    
     :plugins      [[lein-figwheel "0.5.18"]
                    [lein-doo "0.1.8"]]}
    :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
