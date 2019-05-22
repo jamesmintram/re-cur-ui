@@ -10,7 +10,7 @@
    :data (assoc props :parent parent)})
 
 (defn create-handler [dispatch processor]
-  (fn [_db args]
+  (fn [_db args] 
     (let [[_ param-map] args
 
           data (:data param-map)

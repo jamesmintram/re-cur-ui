@@ -20,8 +20,11 @@
   (reagent/render [views/main-panel]
                   (.getElementById js/document "app")))
 
-(defn ^:after-load init []
+(defn init []
   (re-frame/dispatch-sync [::events/initialize-db])
   (dev-setup)
-  ;;(data/refresh-leaderboard-list)
+  ;;(data/refresh-leaderboard-list) 
+  (mount-root))
+
+(defn ^:after-load reload []
   (mount-root))

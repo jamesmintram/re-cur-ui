@@ -1,4 +1,8 @@
 (ns refer.db)
 
-(def default-db
-  {:name "re-frame"})
+(defonce default-db
+  {:name "re-frame"
+   :users {
+           123 {:id 123 :name "Jimmy"}
+           }
+   })

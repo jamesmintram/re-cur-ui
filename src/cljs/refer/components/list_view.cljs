@@ -1,6 +1,8 @@
 (ns refer.components.list-view
   (:require
    [re-frame.core :as re-frame]
+
+   [day8.re-frame.tracing :refer-macros [fn-traced]]
    [refer.util.context :as ctx]
    [taoensso.timbre :as log]
   ))
@@ -9,22 +11,14 @@
 (re-frame/reg-event-db
  :listview-select
  (ctx/create-rc-handler
-  (fn [data params]
-    (log/info "Listview Select: " params)
+  (fn-traced [data params]
     {:list-view-item params :foo-chee 1})))
 
 
-(defn list-display [items parent-handler]
+(defn list-display [items item-fn props]
   [:div
-   (map
-    (fn [item]
-      [:ul
-       [:li
-        [:a
-         {:href "#"
-          :on-click #(re-frame/dispatch
-                      [:listview-select
-                       {:params {:id 23 :name item}
-                        :data {:parent parent-handler}}])}
-         item]]])
-    items)])
+   [:ul
+    (map
+     (fn [item]
+       [:li {:key (:id item)} (item-fn item props)])
+     items)]])
