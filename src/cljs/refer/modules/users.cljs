@@ -27,7 +27,7 @@
   (let [user-map {:params {:id 23}}
         base-path (:path props  )]
     [:div
-     [:a {:href (str "/users/" (:id item))} "Welcome as: " (:name item)]
+     [:a {:href (str "#/users/" (:id item))} "Welcome as: " (:name item)]
      [:span " - "]
      [:a {:href "#"
           :on-click #(re-frame/dispatch
@@ -46,8 +46,8 @@
 (def routes {"" ::users
              [:id "/"] ::users-item})
 
-(def root ["/" {"users/" routes}])
+;;(def root ["/" {"users/" routes}])
 
 
 
-(bidi/match-route root "/users")
+;;(bidi/match-route root "/users")

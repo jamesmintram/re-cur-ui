@@ -22,7 +22,7 @@
 (defn content-panel [path]
   (let [path (route/step path)]
     (case (:current path)
-      :leaderboards (leaderboards/root path)
+      :leaderboards (leaderboards/root path nil)
       :users (users/root path))))
 
 ;;----------------------------------------------------------
